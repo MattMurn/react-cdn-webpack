@@ -1,0 +1,17 @@
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 90%;
+  height: 100%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.todo-form {
+}
+.todos {
+  width: 400px;
+  background: pink;
+  border-radius: 4px;
+  min-height: 100px;
+  margin-top: 10px;
+}
