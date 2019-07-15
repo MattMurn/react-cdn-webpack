@@ -1,20 +1,19 @@
 'use strict';
-
+console.log('Todo component connected');
 const e = React.createElement;
 
-const Todo = props => {
+ const Todo = props => {
+    let timestamp = new Date();
+    console.log(timestamp.toDateString());
+
     return (
-        <div>
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="..." />
-                <div class="card-body">
-                    <h5 class="card-title">{props.title}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
+        <tr>
+        <th scope="row">1</th>
+        <td>{props.title}</td>
+        <td>{props.description}</td>
+        <td>{timestamp.toString()}</td>
+      </tr>
     )
 }
 
-export default Todo;
+export { Todo };

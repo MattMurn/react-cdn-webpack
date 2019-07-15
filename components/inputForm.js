@@ -1,6 +1,6 @@
 
 // const Todo = import('./Todo.js');
-// import './Todo';÷
+// import { Todo } from './Todo';
 
 'use strict';
 
@@ -36,6 +36,17 @@ var Todo = function Todo(props) {
             "td",
             null,
             timestamp.toString()
+        ),
+        React.createElement(
+            "td",
+            null,
+            " ",
+            React.createElement(
+                "button",
+                null,
+                "Mark as completed"
+            ),
+            " "
         )
     );
 };

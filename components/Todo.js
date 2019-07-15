@@ -1,36 +1,36 @@
 'use strict';
 
+console.log('Todo component connected');
 var e = React.createElement;
 
 var Todo = function Todo(props) {
+    var timestamp = new Date();
+    console.log(timestamp.toDateString());
+
     return React.createElement(
-        "div",
+        'tr',
         null,
         React.createElement(
-            "div",
-            { "class": "card", style: "width: 18rem;" },
-            React.createElement("img", { src: "...", "class": "card-img-top", alt: "..." }),
-            React.createElement(
-                "div",
-                { "class": "card-body" },
-                React.createElement(
-                    "h5",
-                    { "class": "card-title" },
-                    props.title
-                ),
-                React.createElement(
-                    "p",
-                    { "class": "card-text" },
-                    "Some quick example text to build on the card title and make up the bulk of the card's content."
-                ),
-                React.createElement(
-                    "a",
-                    { href: "#", "class": "btn btn-primary" },
-                    "Go somewhere"
-                )
-            )
+            'th',
+            { scope: 'row' },
+            '1'
+        ),
+        React.createElement(
+            'td',
+            null,
+            props.title
+        ),
+        React.createElement(
+            'td',
+            null,
+            props.description
+        ),
+        React.createElement(
+            'td',
+            null,
+            timestamp.toString()
         )
     );
 };
 
-export default Todo;
+export { Todo };

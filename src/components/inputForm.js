@@ -1,6 +1,6 @@
 
 // const Todo = import('./Todo.js');
-// import './Todo';÷
+// import { Todo } from './Todo';
 
 'use strict';
 
@@ -16,6 +16,7 @@ const Todo = props => {
         <td>{props.title}</td>
         <td>{props.description}</td>
         <td>{timestamp.toString()}</td>
+        <td> <button>Mark as completed</button> </td>
       </tr>
     )
 }

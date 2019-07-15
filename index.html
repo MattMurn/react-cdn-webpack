@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
+    <!-- Transpiler for es6 & jsx -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- react & reactDOM -->
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- module loader -->
+    <script crossorigin src=" https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js"></script>
     <title>react cdn example</title>
 </head>
 
@@ -33,6 +37,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
                     <th scope="col">Timestamp</th>
+                    <th className="col-md-6" scope="col">Mark as Complete</th>
                   </tr>
                 </thead>
                 <tbody id="todos">
