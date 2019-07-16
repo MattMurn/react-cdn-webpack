@@ -1,18 +1,21 @@
-
-// const Todo = import('./Todo.js');
-// import { Todo } from './Todo';
-
-'use strict';
-
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var e = React.createElement;
+var _React = React,
+    createElement = _React.createElement,
+    useState = _React.useState;
+var _ReactDOM = ReactDOM,
+    render = _ReactDOM.render;
+
+
+'use strict';
 
 var Todo = function Todo(props) {
+
     var timestamp = new Date();
-    console.log(timestamp.toDateString());
 
     return React.createElement(
         "tr",
@@ -50,12 +53,23 @@ var Todo = function Todo(props) {
         )
     );
 };
-
+var Button = function Button(props) {
+    return React.createElement(
+        "button",
+        null,
+        props.name
+    );
+};
 var inputForm = function inputForm() {
-    var _React$useState = React.useState({ title: "", description: "" }),
-        _React$useState2 = _slicedToArray(_React$useState, 2),
-        curInput = _React$useState2[0],
-        inputChange = _React$useState2[1];
+    var _useState = useState({ title: "", description: "" }),
+        _useState2 = _slicedToArray(_useState, 2),
+        curState = _useState2[0],
+        changeState = _useState2[1];
+
+    var _useState3 = useState([]),
+        _useState4 = _slicedToArray(_useState3, 2),
+        todosArr = _useState4[0],
+        updateArr = _useState4[1];
 
     var inputHandler = function inputHandler(event) {
         // same destructuring event as es6 class
@@ -64,14 +78,21 @@ var inputForm = function inputForm() {
             value = _event$target.value;
         // update state by spreading in the previous state history & key value pair...
 
-        return inputChange(Object.assign({}, curInput, _defineProperty({}, name, value)));
+        return changeState(Object.assign({}, curState, _defineProperty({}, name, value)));
     };
 
     var addTodo = function addTodo() {
 
+        updateArr([].concat(_toConsumableArray(todosArr), [curState]));
+
         var target = document.querySelector('#todos');
-        var newTodo = e(Todo, { title: curInput.title, description: curInput.description });
-        ReactDOM.render(newTodo, target);
+        todosArr.map(function (el, i) {
+            console.log(el);
+            var newTodo = createElement(Todo, { title: el.title, description: el.description });
+            render(newTodo, target);
+        });
+        // let newTodo = createElement(Todo, { title: curState.title, description: curState.description });
+        // render(newTodo, target);
         // pass props into the new instance of todo comonent then render.
     };
 
@@ -88,5 +109,7 @@ var inputForm = function inputForm() {
     );
 };
 
+var htmlTable = document.querySelector('#todos');
+
 var htmlEl = document.querySelector('#todo-form');
-ReactDOM.render(e(inputForm), htmlEl);
+render(createElement(inputForm), htmlEl);
