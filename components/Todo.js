@@ -1,36 +1,32 @@
 'use strict';
 
-console.log('Todo component connected');
 var e = React.createElement;
 
 var Todo = function Todo(props) {
     var timestamp = new Date();
-    console.log(timestamp.toDateString());
 
     return React.createElement(
-        'tr',
+        "tr",
         null,
         React.createElement(
-            'th',
-            { scope: 'row' },
-            '1'
+            "th",
+            { scope: "row" },
+            "1"
         ),
         React.createElement(
-            'td',
+            "td",
             null,
             props.title
         ),
         React.createElement(
-            'td',
+            "td",
             null,
             props.description
         ),
         React.createElement(
-            'td',
+            "td",
             null,
             timestamp.toString()
         )
     );
 };
-
-export { Todo };

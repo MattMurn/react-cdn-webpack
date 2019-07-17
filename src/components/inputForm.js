@@ -1,28 +1,11 @@
 const { createElement, useState } = React;
 const { render } = ReactDOM;
+// import './App';
+
 
 'use strict';
 
 
-const Todo = props => {
-
-    let timestamp = new Date();
-
-    return (
-        <tr>
-            <th scope="row">1</th>
-            <td>{props.title}</td>
-            <td>{props.description}</td>
-            <td>{timestamp.toString()}</td>
-            <td> <button>Mark as completed</button> </td>
-        </tr>
-    )
-}
-const Button = props => {
-    return (
-        <button>{props.name}</button>
-    )
-}
 const inputForm = () => {
 
     const [curState, changeState] = useState({ title: "", description: ""});
@@ -55,9 +38,7 @@ const inputForm = () => {
         <div className="todo-container__new-todo-container">
             <input onChange={inputHandler} name="title" type="text" placeholder="enter todo title" />
             <input onChange={inputHandler} name="description" type="text" placeholder="add description here" />
-
             <button className="btn" onClick={addTodo}>Create</button>
-            
         </div>
     );
 }
@@ -66,3 +47,8 @@ const htmlTable = document.querySelector('#todos');
 
 const htmlEl = document.querySelector('#todo-form');
 render(createElement(inputForm), htmlEl);
+
+/*
+    The real crux of this is to get a form input, add todo to table, and manage state through the table
+    use vanilla js to manage the form submit, then pass it into the react component that will manage the tables.
+*/

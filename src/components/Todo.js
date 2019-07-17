@@ -1,10 +1,8 @@
 'use strict';
-console.log('Todo component connected');
 const e = React.createElement;
 
  const Todo = props => {
     let timestamp = new Date();
-    console.log(timestamp.toDateString());
 
     return (
         <tr>
@@ -15,5 +13,3 @@ const e = React.createElement;
       </tr>
     )
 }
-
-export { Todo };

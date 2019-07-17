@@ -22,31 +22,45 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">React CDN Todo List - Using Hooks!!!!</h1>
-            <p class="lead">The purpose of this is to create a todo list using the react cdn, only funcitonal components and react hooks. Hopefully 
+            <p class="lead">The purpose of this is to create a todo list using the react cdn, only funcitonal components
+                and react hooks. Hopefully
                 we'll never have to use class components again...
             </p>
         </div>
     </div>
     <div class="todo-container">
-        <div id="todo-form"></div>
+        <form>
+            <div class="row">
+                <div class="col-md-4">
+                    <input id="todo-title" type="text" class="form-control" placeholder="Todo Title">
+                </div>
+                <div class="col-md-4">
+                        <input id="todo-description" type="text" class="form-control" placeholder="Todo Description">
+                </div>
+                <button id="add-todo-btn" type="button" class="btn btn-dark">Add Todo</button>
+            </div>
+        </form>
         <table class="table">
-              <table class="table">
+            <table class="table">
                 <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Timestamp</th>
-                    <th className="col-md-6" scope="col">Mark as Complete</th>
-                  </tr>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Timestamp</th>
+                        <th className="col-md-6" scope="col">Mark as Complete</th>
+                    </tr>
                 </thead>
                 <tbody id="todos">
                 </tbody>
-              </table>
+            </table>
     </div>
 
 
 </body>
-<script src="components/inputForm.js"></script>
+<script src="components/Todo.js"></script>
+<script src="components/vanillaForm.js"></script>
+<script src="components/Table.js"></script>
+
 
 </html>

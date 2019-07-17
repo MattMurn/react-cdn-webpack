@@ -9,57 +9,11 @@ var _React = React,
     useState = _React.useState;
 var _ReactDOM = ReactDOM,
     render = _ReactDOM.render;
+// import './App';
 
 
 'use strict';
 
-var Todo = function Todo(props) {
-
-    var timestamp = new Date();
-
-    return React.createElement(
-        "tr",
-        null,
-        React.createElement(
-            "th",
-            { scope: "row" },
-            "1"
-        ),
-        React.createElement(
-            "td",
-            null,
-            props.title
-        ),
-        React.createElement(
-            "td",
-            null,
-            props.description
-        ),
-        React.createElement(
-            "td",
-            null,
-            timestamp.toString()
-        ),
-        React.createElement(
-            "td",
-            null,
-            " ",
-            React.createElement(
-                "button",
-                null,
-                "Mark as completed"
-            ),
-            " "
-        )
-    );
-};
-var Button = function Button(props) {
-    return React.createElement(
-        "button",
-        null,
-        props.name
-    );
-};
 var inputForm = function inputForm() {
     var _useState = useState({ title: "", description: "" }),
         _useState2 = _slicedToArray(_useState, 2),
@@ -87,7 +41,7 @@ var inputForm = function inputForm() {
 
         var target = document.querySelector('#todos');
         todosArr.map(function (el, i) {
-            console.log(el);
+
             var newTodo = createElement(Todo, { title: el.title, description: el.description });
             render(newTodo, target);
         });
@@ -113,3 +67,8 @@ var htmlTable = document.querySelector('#todos');
 
 var htmlEl = document.querySelector('#todo-form');
 render(createElement(inputForm), htmlEl);
+
+/*
+    The real crux of this is to get a form input, add todo to table, and manage state through the table
+    use vanilla js to manage the form submit, then pass it into the react component that will manage the tables.
+*/
