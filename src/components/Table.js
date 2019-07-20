@@ -3,15 +3,20 @@ const { render } = ReactDOM;
 
 'use strict'
 
-const Table = (props) => {
-    const [ tableData, updateTable ] = useState({title: 'first', description: 'this is a default task'});
-    
-    useEffect(()=> {
-        updateTable(...tableData, transferObject);
-    })
+const Table = () => {
+    const [ tableData, updateTable ] = useState(todosArray);
+    /* TODO - need to figure out how to listen for changes in the todosArray and reRender.
+        probably something in useEffect / context api. 
+        then figure out how to handle the 
+    */
+    // useEffect(()=> {
+    //     updateTable(todosArray);
+    // })
 
     return (
-        <Todo title={tableData.title} description={tableData.description}/>
+            tableData.map((row,key) => {
+                return <Todo title={row.title} description={row.description} num={key+1} key={key}/>
+            })
     )
 }
 

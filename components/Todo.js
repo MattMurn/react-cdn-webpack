@@ -11,7 +11,7 @@ var Todo = function Todo(props) {
         React.createElement(
             "th",
             { scope: "row" },
-            "1"
+            props.num
         ),
         React.createElement(
             "td",

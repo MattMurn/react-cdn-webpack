@@ -1,6 +1,5 @@
 const { createElement, useState } = React;
 const { render } = ReactDOM;
-// import './App';
 
 
 'use strict';

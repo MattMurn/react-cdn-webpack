@@ -9,7 +9,6 @@ var _React = React,
     useState = _React.useState;
 var _ReactDOM = ReactDOM,
     render = _ReactDOM.render;
-// import './App';
 
 
 'use strict';

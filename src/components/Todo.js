@@ -6,7 +6,7 @@ const e = React.createElement;
 
     return (
         <tr>
-        <th scope="row">1</th>
+        <th scope="row">{props.num}</th>
         <td>{props.title}</td>
         <td>{props.description}</td>
         <td>{timestamp.toString()}</td>
