@@ -14,6 +14,10 @@ var _ReactDOM = ReactDOM,
 'use strict';
 // This is a comment that I am adding
 
+var mayo = function mayo() {
+    return true;
+};
+
 var inputForm = function inputForm() {
     var _useState = useState({ title: "", description: "" }),
         _useState2 = _slicedToArray(_useState, 2),

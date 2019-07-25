@@ -5,6 +5,10 @@ const { render } = ReactDOM;
 'use strict';
 // This is a comment that I am adding
 
+const mayo = () => {
+    return true;
+}
+
 const inputForm = () => {
 
     const [curState, changeState] = useState({ title: "", description: ""});
