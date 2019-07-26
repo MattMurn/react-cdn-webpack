@@ -9,6 +9,10 @@ const { render } = ReactDOM;
 // This is a commit that I am adding
 >>>>>>> willBranch
 
+const mayo = () => {
+    return true;
+}
+
 const inputForm = () => {
 
     const [curState, changeState] = useState({ title: "", description: ""});
