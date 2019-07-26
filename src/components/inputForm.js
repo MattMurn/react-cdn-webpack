@@ -3,7 +3,11 @@ const { render } = ReactDOM;
 
 
 'use strict';
+<<<<<<< HEAD
 // nice comment dude!
+=======
+// This is a commit that I am adding
+>>>>>>> willBranch
 
 const inputForm = () => {
 

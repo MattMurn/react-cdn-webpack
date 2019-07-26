@@ -3,7 +3,6 @@
 var e = React.createElement;
 
 var Todo = function Todo(props) {
-    var timestamp = new Date();
 
     return React.createElement(
         "tr",
@@ -26,7 +25,7 @@ var Todo = function Todo(props) {
         React.createElement(
             "td",
             null,
-            timestamp.toString()
+            props.timestamp
         )
     );
 };
