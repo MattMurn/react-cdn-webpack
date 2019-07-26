@@ -15,7 +15,7 @@ var todosArray = [{ title: 'first', description: 'hard coded task from the vanil
 
 var Table = function Table() {
     // setting state with empty array, testing out useEffect to updateTable on mount.
-    var _useState = useState([]),
+    var _useState = useState(todosArray),
         _useState2 = _slicedToArray(_useState, 2),
         tableData = _useState2[0],
         updateTable = _useState2[1];
@@ -30,19 +30,11 @@ var Table = function Table() {
         description = _useState6[0],
         updateDescription = _useState6[1];
 
-    /* TODO - need to figure out how to listen for changes in the todosArray and reRender.
-        probably something in useEffect / context api. 
-        then figure out how to handle the 
-    */
-    // replacing the old componentDidMount lifecycle event.
-
-
     useEffect(function () {
-        updateTable(todosArray);
-    });
+        // wild that this is empty for 
+    }, tableData);
 
     var handleInputChange = function handleInputChange(event) {
-        console.log(event.target.value);
         if (event.target.name === 'title') {
             updateTitle(event.target.value);
         } else if (event.target.name === 'description') {
@@ -51,8 +43,10 @@ var Table = function Table() {
     };
     var addTodo = function addTodo() {
         var newTable = [].concat(_toConsumableArray(tableData), [{ title: title, description: description }]);
-        console.log(newTable);
         updateTable(newTable);
+    };
+    var removeTodo = function removeTodo(event) {
+        console.log(event.target.parentNode.parentNode);
     };
     return React.createElement(
         'div',
@@ -62,27 +56,31 @@ var Table = function Table() {
             null,
             React.createElement(
                 'div',
-                { className: 'row' },
+                { className: 'row todo_input' },
                 React.createElement(
                     'div',
-                    { className: 'col-md-4' },
+                    { className: 'col-md-4 todo_input_col' },
                     React.createElement('input', { id: 'todo-title', type: 'text', name: 'title', className: 'form-control', onChange: handleInputChange, placeholder: 'Todo Title' })
                 ),
                 React.createElement(
                     'div',
-                    { className: 'col-md-4' },
+                    { className: 'col-md-4 todo_input_col' },
                     React.createElement('input', { id: 'todo-description', type: 'text', name: 'description', className: 'form-control', onChange: handleInputChange, placeholder: 'Todo Description' })
                 ),
                 React.createElement(
-                    'button',
-                    { id: 'add-todo-btn', type: 'button', onClick: addTodo, className: 'btn btn-dark' },
-                    'Add Todo'
+                    'div',
+                    { className: 'col-md-4 todo_input_col' },
+                    React.createElement(
+                        'button',
+                        { id: 'add-todo-btn', type: 'button', onClick: addTodo, className: 'btn btn-dark' },
+                        'Add Todo'
+                    )
                 )
             )
         ),
         React.createElement(
             'table',
-            { className: 'table' },
+            { className: 'table table-striped table-dark' },
             React.createElement(
                 'thead',
                 { className: 'thead-dark' },
@@ -91,27 +89,27 @@ var Table = function Table() {
                     null,
                     React.createElement(
                         'th',
-                        { scope: 'col' },
+                        { scope: 'col todo_table_num' },
                         '#'
                     ),
                     React.createElement(
                         'th',
-                        { scope: 'col' },
+                        { scope: 'col todo_table_title' },
                         'Title'
                     ),
                     React.createElement(
                         'th',
-                        { scope: 'col' },
+                        { scope: 'col todo_table_description' },
                         'Description'
                     ),
                     React.createElement(
                         'th',
-                        { scope: 'col' },
+                        { scope: 'col todo_table_time' },
                         'Timestamp'
                     ),
                     React.createElement(
                         'th',
-                        { className: 'col-md-6', scope: 'col' },
+                        { className: 'col todo_table_complete', scope: 'col' },
                         'Mark as Complete'
                     )
                 )
@@ -120,7 +118,13 @@ var Table = function Table() {
                 'tbody',
                 { id: 'todos' },
                 tableData.map(function (row, key) {
-                    return React.createElement(Todo, { title: row.title, description: row.description, num: key + 1, key: key });
+                    return React.createElement(Todo, {
+                        title: row.title,
+                        description: row.description,
+                        num: key + 1,
+                        onClick: removeTodo,
+                        key: key
+                    });
                 })
             )
         )

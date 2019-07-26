@@ -6,12 +6,33 @@
   height: 100%;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-.todo-form {
-}
 .todos {
   width: 400px;
   background: pink;
   border-radius: 4px;
   min-height: 100px;
   margin-top: 10px;
+}
+.todo_input {
+  margin-bottom: 25px;
+}
+.todo_input_col {
+  margin-bottom: 10px;
+}
+.todo_table_num, 
+.todo_table_time,
+.todo_table_complete {
+  width: 40px;
+}
+.todo_table_complete {
+  text-align: center;
+}
+.todo_table_description {
+  min-width: 200px;
+}
+.complete_btn {
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255);  
+  text-align: center;
 }

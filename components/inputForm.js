@@ -12,11 +12,6 @@ var _ReactDOM = ReactDOM,
 
 
 'use strict';
-// This is a comment that I am adding
-
-var mayo = function mayo() {
-    return true;
-};
 
 var inputForm = function inputForm() {
     var _useState = useState({ title: "", description: "" }),
@@ -40,9 +35,7 @@ var inputForm = function inputForm() {
     };
 
     var addTodo = function addTodo() {
-
         updateArr([].concat(_toConsumableArray(todosArr), [curState]));
-
         var target = document.querySelector('#todos');
         todosArr.map(function (el, i) {
 

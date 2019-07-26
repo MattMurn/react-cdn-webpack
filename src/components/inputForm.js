@@ -3,15 +3,6 @@ const { render } = ReactDOM;
 
 
 'use strict';
-<<<<<<< HEAD
-// nice comment dude!
-=======
-// This is a commit that I am adding
->>>>>>> willBranch
-
-const mayo = () => {
-    return true;
-}
 
 const inputForm = () => {
 
@@ -25,9 +16,7 @@ const inputForm = () => {
     }
 
     const addTodo = () => {
-
         updateArr([...todosArr, curState])
-
         let target = document.querySelector('#todos');
         todosArr.map((el, i) => {
 
