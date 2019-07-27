@@ -2,7 +2,10 @@ const { createElement, useState, useEffect } = React;
 const { render } = ReactDOM;
 
 'use strict'
-let todosArray = [{title: 'first', description: 'hard coded task from the vanilla form file'}, {title: 'second', description: "also hard coded from the vanilla for file"}];
+let todosArray = [
+    {title: 'first', description: 'hard coded task from the vanilla form file'}, 
+    {title: 'second', description: "also hard coded from the vanilla for file"}
+];
 
 const Table = () => {
     // setting state with empty array, testing out useEffect to updateTable on mount.
@@ -27,7 +30,10 @@ const Table = () => {
         updateTable(newTable);
     }
     const removeTodo = event => {
-        console.log(event.target.parentNode.parentNode);
+        console.log(event.target)
+        let rowIdentifier = event.target.parentNode.parentNode.children[1].innerHTML;
+        let tableIndex = tableData.forEach((row,i)=> (row.title === rowIdentifier)? i : null)
+        console.log(tableIndex);
     }
     return (
         <div className="todo-container">

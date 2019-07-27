@@ -46,7 +46,12 @@ var Table = function Table() {
         updateTable(newTable);
     };
     var removeTodo = function removeTodo(event) {
-        console.log(event.target.parentNode.parentNode);
+        console.log(event.target);
+        var rowIdentifier = event.target.parentNode.parentNode.children[1].innerHTML;
+        var tableIndex = tableData.forEach(function (row, i) {
+            return row.title === rowIdentifier ? i : null;
+        });
+        console.log(tableIndex);
     };
     return React.createElement(
         'div',

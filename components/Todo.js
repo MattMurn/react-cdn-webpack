@@ -31,7 +31,7 @@ var Todo = function Todo(props) {
             "td",
             { className: "todo_table_complete" },
             React.createElement(
-                "button",
+                "a",
                 { className: "complete_btn", onClick: props.onClick },
                 "X"
             )
