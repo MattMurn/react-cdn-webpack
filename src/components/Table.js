@@ -32,7 +32,12 @@ const Table = () => {
     const removeTodo = event => {
         console.log(event.target)
         let rowIdentifier = event.target.parentNode.parentNode.children[1].innerHTML;
-        let tableIndex = tableData.forEach((row,i)=> (row.title === rowIdentifier)? i : null)
+        let tableIndex = tableData.forEach((row,i)=> {
+            if(row.title === rowIdentifier){
+                console.log(i);
+                return i;
+            }
+        })
         console.log(tableIndex);
     }
     return (

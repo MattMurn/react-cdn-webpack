@@ -49,7 +49,10 @@ var Table = function Table() {
         console.log(event.target);
         var rowIdentifier = event.target.parentNode.parentNode.children[1].innerHTML;
         var tableIndex = tableData.forEach(function (row, i) {
-            return row.title === rowIdentifier ? i : null;
+            if (row.title === rowIdentifier) {
+                console.log(i);
+                return i;
+            }
         });
         console.log(tableIndex);
     };
