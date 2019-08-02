@@ -3,17 +3,29 @@ look at reference to the .gl project.
 */
 const reactWrite = (() => {
     document.getElementById('reactor-btn').addEventListener('click', () => {
-        writeScript('https://unpkg.com/react@16/umd/react.development.js');
-        writeScript('https://unpkg.com/react-dom@16/umd/react-dom.development.js');
-
+        let react = new Promise((resolve, reject)=> {
+            writeScript('https://unpkg.com/react@16/umd/react.development.js', document.getElementsByTagName('head')[0], 'reactCDN');
+            writeScript('https://unpkg.com/react-dom@16/umd/react-dom.development.js', document.getElementsByTagName('head')[0], 'react-d0mCDN');
+            return resolve('YOOOOOOOOO');
+        })
+        react.then(value => {
+            console.log(value);
+            setTimeout(() => {
+                writeScript('components/Todo.js', document.getElementsByTagName('body')[0], 'react-todo');            
+                writeScript('components/Table.js', document.getElementsByTagName('body')[0], 'react-table');
+            }, 4000)
+        })
     })
 })();
 
-const writeScript = source => {
+const writeScript = (source, target, id) => {
+    if(document.getElementById(id)) return;
     let script = document.createElement('script');
     script.setAttribute('crossorigin','');
     script.setAttribute('src', source);
-    let head = document.getElementsByTagName('head')[0];
+    script.setAttribute('id', id);
     //TODO - add conditional to check if script is already in head.
-    return head.appendChild(script);
+    return target.appendChild(script);
 }
+
+console.log(document.getElementsByTagName('body'));
