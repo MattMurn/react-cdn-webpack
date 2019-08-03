@@ -3,8 +3,8 @@ const { render } = ReactDOM;
 
 'use strict'
 let todosArray = [
-    {title: 'first', description: 'hard coded task from the vanilla form file'}, 
-    {title: 'second', description: "also hard coded from the vanilla for file"}
+    {title: 1, description: 'hard coded task from the vanilla form file'}, 
+    {title: 2, description: "also hard coded from the vanilla for file"}
 ];
 
 const Table = () => {
@@ -29,16 +29,24 @@ const Table = () => {
         let newTable = [...tableData, {title: title, description: description}]
         updateTable(newTable);
     }
-    const removeTodo = event => {
-        console.log(event.target)
-        let rowIdentifier = event.target.parentNode.parentNode.children[1].innerHTML;
-        let tableIndex = tableData.forEach((row,i)=> {
-            if(row.title === rowIdentifier){
-                console.log(i);
-                return i;
-            }
-        })
-        console.log(tableIndex);
+    const markComplete = event => {
+        // let rowIdentifier = event.target.parentNode.parentNode.children[1].innerHTML;
+        // let tableIndex = tableData.forEach((row,i)=> {
+        //     if(row.title === rowIdentifier){
+        //         return i;
+        //     }
+        // })
+        
+        let text = document.querySelector('.complete_btn');
+        this.event.target.innerHTML = "C";
+        console.log(this.event.target);
+        // text.classList.remove('complete_btn');
+    }
+    const sortColumn = () => {
+        let table = tableData.sort((a,b) => b.title-a.title);
+        // updateTable(table);
+        console.log(tableData);
+        
     }
     return (
         <div className="todo-container">
@@ -58,7 +66,7 @@ const Table = () => {
             <table className="table table-striped table-dark">
                     <thead className="thead-dark">
                         <tr>
-                            <th scope="col todo_table_num">#</th>
+                            <th scope="col todo_table_num" onClick={sortColumn}><a>#</a></th>
                             <th scope="col todo_table_title">Title</th>
                             <th scope="col todo_table_description">Description</th>
                             <th scope="col todo_table_time">Timestamp</th>
@@ -71,7 +79,7 @@ const Table = () => {
                             title={row.title} 
                             description={row.description} 
                             num={key + 1} 
-                            onClick={removeTodo}
+                            onClick={markComplete}
                             key={key} 
                             />
                         })}

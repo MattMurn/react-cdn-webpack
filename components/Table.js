@@ -1,3 +1,5 @@
+var _this = this;
+
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -11,7 +13,7 @@ var _ReactDOM = ReactDOM,
 
 
 'use strict';
-var todosArray = [{ title: 'first', description: 'hard coded task from the vanilla form file' }, { title: 'second', description: "also hard coded from the vanilla for file" }];
+var todosArray = [{ title: 1, description: 'hard coded task from the vanilla form file' }, { title: 2, description: "also hard coded from the vanilla for file" }];
 
 var Table = function Table() {
     // setting state with empty array, testing out useEffect to updateTable on mount.
@@ -45,16 +47,25 @@ var Table = function Table() {
         var newTable = [].concat(_toConsumableArray(tableData), [{ title: title, description: description }]);
         updateTable(newTable);
     };
-    var removeTodo = function removeTodo(event) {
-        console.log(event.target);
-        var rowIdentifier = event.target.parentNode.parentNode.children[1].innerHTML;
-        var tableIndex = tableData.forEach(function (row, i) {
-            if (row.title === rowIdentifier) {
-                console.log(i);
-                return i;
-            }
+    var markComplete = function markComplete(event) {
+        // let rowIdentifier = event.target.parentNode.parentNode.children[1].innerHTML;
+        // let tableIndex = tableData.forEach((row,i)=> {
+        //     if(row.title === rowIdentifier){
+        //         return i;
+        //     }
+        // })
+
+        var text = document.querySelector('.complete_btn');
+        _this.event.target.innerHTML = "C";
+        console.log(_this.event.target);
+        // text.classList.remove('complete_btn');
+    };
+    var sortColumn = function sortColumn() {
+        var table = tableData.sort(function (a, b) {
+            return b.title - a.title;
         });
-        console.log(tableIndex);
+        // updateTable(table);
+        console.log(tableData);
     };
     return React.createElement(
         'div',
@@ -97,8 +108,12 @@ var Table = function Table() {
                     null,
                     React.createElement(
                         'th',
-                        { scope: 'col todo_table_num' },
-                        '#'
+                        { scope: 'col todo_table_num', onClick: sortColumn },
+                        React.createElement(
+                            'a',
+                            null,
+                            '#'
+                        )
                     ),
                     React.createElement(
                         'th',
@@ -130,7 +145,7 @@ var Table = function Table() {
                         title: row.title,
                         description: row.description,
                         num: key + 1,
-                        onClick: removeTodo,
+                        onClick: markComplete,
                         key: key
                     });
                 })

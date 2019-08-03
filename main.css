@@ -1,4 +1,8 @@
 
+a:hover {
+  cursor: pointer;
+}
+
 .btn-wrapper {
   display: flex;
   flex-direction: column;
@@ -34,14 +38,19 @@
   width: 40px;
 }
 .todo_table_complete {
+  z-index: 100;
   text-align: center;
-}
-.todo_table_description {
-  min-width: 200px;
-}
-.complete_btn {
   background: none;
   border: none;
   color: rgb(255, 255, 255);  
   text-align: center;
+}
+
+.todo_table_description {
+  min-width: 200px;
+}
+.todo_table_complete:hover {
+  /* display: block; */
+  transition: transform 500ms ease;
+  transform: rotate(15deg);
 }
