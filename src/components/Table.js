@@ -2,14 +2,12 @@ const { createElement, useState, useEffect } = React;
 const { render } = ReactDOM;
 
 'use strict'
-let todosArray = [
-    {title: 1, description: 'hard coded task from the vanilla form file'}, 
-    {title: 2, description: "also hard coded from the vanilla for file"}
-];
+console.log(localStorage.getItem('todos'));
+
 
 const Table = () => {
     // setting state with empty array, testing out useEffect to updateTable on mount.
-    const [ tableData, updateTable ] = useState(todosArray);
+    const [ tableData, updateTable ] = useState([]);
     const [ title, updateTitle ] = useState("");
     const [description, updateDescription] = useState("");
     
@@ -26,28 +24,21 @@ const Table = () => {
         }
     }
     const addTodo = () => {
-        let newTable = [...tableData, {title: title, description: description}]
+
+        let newTable = [ {title: title, description: description}, ...tableData]
         updateTable(newTable);
+        localStorage.setItem('todos', newTable);
     }
     const markComplete = event => {
-        // let rowIdentifier = event.target.parentNode.parentNode.children[1].innerHTML;
-        // let tableIndex = tableData.forEach((row,i)=> {
-        //     if(row.title === rowIdentifier){
-        //         return i;
-        //     }
-        // })
-        
         let text = document.querySelector('.complete_btn');
         this.event.target.innerHTML = "C";
         console.log(this.event.target);
-        // text.classList.remove('complete_btn');
     }
-    const sortColumn = () => {
-        let table = tableData.sort((a,b) => b.title-a.title);
-        // updateTable(table);
-        console.log(tableData);
-        
-    }
+    // const sortColumn = () => {
+    //     let table = tableData.sort((a,b) => b.title-a.title);
+    //     // updateTable(table);
+    //     console.log(tableData);
+    // }
     return (
         <div className="todo-container">
             <form>
@@ -66,7 +57,7 @@ const Table = () => {
             <table className="table table-striped table-dark">
                     <thead className="thead-dark">
                         <tr>
-                            <th scope="col todo_table_num" onClick={sortColumn}><a>#</a></th>
+                            <th scope="col todo_table_num"><a>#</a></th>
                             <th scope="col todo_table_title">Title</th>
                             <th scope="col todo_table_description">Description</th>
                             <th scope="col todo_table_time">Timestamp</th>

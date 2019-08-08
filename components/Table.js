@@ -13,11 +13,11 @@ var _ReactDOM = ReactDOM,
 
 
 'use strict';
-var todosArray = [{ title: 1, description: 'hard coded task from the vanilla form file' }, { title: 2, description: "also hard coded from the vanilla for file" }];
+console.log(localStorage.getItem('todos'));
 
 var Table = function Table() {
     // setting state with empty array, testing out useEffect to updateTable on mount.
-    var _useState = useState(todosArray),
+    var _useState = useState([]),
         _useState2 = _slicedToArray(_useState, 2),
         tableData = _useState2[0],
         updateTable = _useState2[1];
@@ -44,29 +44,21 @@ var Table = function Table() {
         }
     };
     var addTodo = function addTodo() {
-        var newTable = [].concat(_toConsumableArray(tableData), [{ title: title, description: description }]);
+
+        var newTable = [{ title: title, description: description }].concat(_toConsumableArray(tableData));
         updateTable(newTable);
+        localStorage.setItem('todos', newTable);
     };
     var markComplete = function markComplete(event) {
-        // let rowIdentifier = event.target.parentNode.parentNode.children[1].innerHTML;
-        // let tableIndex = tableData.forEach((row,i)=> {
-        //     if(row.title === rowIdentifier){
-        //         return i;
-        //     }
-        // })
-
         var text = document.querySelector('.complete_btn');
         _this.event.target.innerHTML = "C";
         console.log(_this.event.target);
-        // text.classList.remove('complete_btn');
     };
-    var sortColumn = function sortColumn() {
-        var table = tableData.sort(function (a, b) {
-            return b.title - a.title;
-        });
-        // updateTable(table);
-        console.log(tableData);
-    };
+    // const sortColumn = () => {
+    //     let table = tableData.sort((a,b) => b.title-a.title);
+    //     // updateTable(table);
+    //     console.log(tableData);
+    // }
     return React.createElement(
         'div',
         { className: 'todo-container' },
@@ -108,7 +100,7 @@ var Table = function Table() {
                     null,
                     React.createElement(
                         'th',
-                        { scope: 'col todo_table_num', onClick: sortColumn },
+                        { scope: 'col todo_table_num' },
                         React.createElement(
                             'a',
                             null,
