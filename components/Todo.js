@@ -4,7 +4,6 @@ var e = React.createElement;
 
 var Todo = function Todo(props) {
     var timestamp = new Date();
-    console.log(timestamp);
     return React.createElement(
         "tr",
         null,

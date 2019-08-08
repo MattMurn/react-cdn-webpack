@@ -3,7 +3,6 @@ const e = React.createElement;
 
  const Todo = props => {
     let timestamp = new Date();
-    console.log(timestamp);
     return (
         <tr>
         <th scope="row">{props.num}</th>

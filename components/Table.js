@@ -7,13 +7,29 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var _React = React,
     createElement = _React.createElement,
     useState = _React.useState,
-    useEffect = _React.useEffect;
+    useEffect = _React.useEffect,
+    useContext = _React.useContext;
 var _ReactDOM = ReactDOM,
     render = _ReactDOM.render;
 
+var UserContext = React.createContext({});
+var UserProvider = UserContext.Provider;
+var UserConsumer = UserContext.UserConsumer;
+React.createContext(true);
 
 'use strict';
-console.log(localStorage.getItem('todos'));
+
+var testerItem = "YOOOOOOOO";
+
+var Item = function Item(props) {
+    var user = useContext(UserContext);
+
+    return React.createElement(
+        "div",
+        null,
+        user
+    );
+};
 
 var Table = function Table() {
     // setting state with empty array, testing out useEffect to updateTable on mount.
@@ -60,78 +76,83 @@ var Table = function Table() {
     //     console.log(tableData);
     // }
     return React.createElement(
-        'div',
-        { className: 'todo-container' },
+        "div",
+        { className: "todo-container" },
         React.createElement(
-            'form',
+            UserProvider,
+            { value: testerItem },
+            React.createElement(Item, null)
+        ),
+        React.createElement(
+            "form",
             null,
             React.createElement(
-                'div',
-                { className: 'row todo_input' },
+                "div",
+                { className: "row todo_input" },
                 React.createElement(
-                    'div',
-                    { className: 'col-md-4 todo_input_col' },
-                    React.createElement('input', { id: 'todo-title', type: 'text', name: 'title', className: 'form-control', onChange: handleInputChange, placeholder: 'Todo Title' })
+                    "div",
+                    { className: "col-md-4 todo_input_col" },
+                    React.createElement("input", { id: "todo-title", type: "text", name: "title", className: "form-control", onChange: handleInputChange, placeholder: "Todo Title" })
                 ),
                 React.createElement(
-                    'div',
-                    { className: 'col-md-4 todo_input_col' },
-                    React.createElement('input', { id: 'todo-description', type: 'text', name: 'description', className: 'form-control', onChange: handleInputChange, placeholder: 'Todo Description' })
+                    "div",
+                    { className: "col-md-4 todo_input_col" },
+                    React.createElement("input", { id: "todo-description", type: "text", name: "description", className: "form-control", onChange: handleInputChange, placeholder: "Todo Description" })
                 ),
                 React.createElement(
-                    'div',
-                    { className: 'col-md-4 todo_input_col' },
+                    "div",
+                    { className: "col-md-4 todo_input_col" },
                     React.createElement(
-                        'button',
-                        { id: 'add-todo-btn', type: 'button', onClick: addTodo, className: 'btn btn-dark' },
-                        'Add Todo'
+                        "button",
+                        { id: "add-todo-btn", type: "button", onClick: addTodo, className: "btn btn-dark" },
+                        "Add Todo"
                     )
                 )
             )
         ),
         React.createElement(
-            'table',
-            { className: 'table table-striped table-dark' },
+            "table",
+            { className: "table table-striped table-dark" },
             React.createElement(
-                'thead',
-                { className: 'thead-dark' },
+                "thead",
+                { className: "thead-dark" },
                 React.createElement(
-                    'tr',
+                    "tr",
                     null,
                     React.createElement(
-                        'th',
-                        { scope: 'col todo_table_num' },
+                        "th",
+                        { scope: "col todo_table_num" },
                         React.createElement(
-                            'a',
+                            "a",
                             null,
-                            '#'
+                            "#"
                         )
                     ),
                     React.createElement(
-                        'th',
-                        { scope: 'col todo_table_title' },
-                        'Title'
+                        "th",
+                        { scope: "col todo_table_title" },
+                        "Title"
                     ),
                     React.createElement(
-                        'th',
-                        { scope: 'col todo_table_description' },
-                        'Description'
+                        "th",
+                        { scope: "col todo_table_description" },
+                        "Description"
                     ),
                     React.createElement(
-                        'th',
-                        { scope: 'col todo_table_time' },
-                        'Timestamp'
+                        "th",
+                        { scope: "col todo_table_time" },
+                        "Timestamp"
                     ),
                     React.createElement(
-                        'th',
-                        { className: 'col todo_table_complete', scope: 'col' },
-                        'Mark as Complete'
+                        "th",
+                        { className: "col todo_table_complete", scope: "col" },
+                        "Mark as Complete"
                     )
                 )
             ),
             React.createElement(
-                'tbody',
-                { id: 'todos' },
+                "tbody",
+                { id: "todos" },
                 tableData.map(function (row, key) {
                     return React.createElement(Todo, {
                         title: row.title,

@@ -1,9 +1,21 @@
-const { createElement, useState, useEffect } = React;
+const { createElement, useState, useEffect, useContext } = React;
 const { render } = ReactDOM;
+const UserContext = React.createContext({});
+const UserProvider = UserContext.Provider;
+const UserConsumer = UserContext.UserConsumer;
+React.createContext(true);
 
 'use strict'
-console.log(localStorage.getItem('todos'));
 
+let testerItem =  "YOOOOOOOO";
+
+const Item = props => {
+    let user = useContext(UserContext);
+
+    return (
+            <div>{user}</div>
+    )
+}
 
 const Table = () => {
     // setting state with empty array, testing out useEffect to updateTable on mount.
@@ -41,6 +53,9 @@ const Table = () => {
     // }
     return (
         <div className="todo-container">
+            <UserProvider value={testerItem}>
+                <Item />
+            </UserProvider>
             <form>
                 <div className="row todo_input">
                     <div className="col-md-4 todo_input_col">
