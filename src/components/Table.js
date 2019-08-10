@@ -7,7 +7,6 @@ React.createContext(true);
 
 'use strict'
 
-let testerItem =  "YOOOOOOOO";
 
 const Item = props => {
     let user = useContext(UserContext);
@@ -20,11 +19,11 @@ const Item = props => {
 const Table = () => {
     // setting state with empty array, testing out useEffect to updateTable on mount.
     const [ tableData, updateTable ] = useState([]);
-    const [ title, updateTitle ] = useState("");
+    const [ title, updateTitle ] = useState('Reactify');
     const [description, updateDescription] = useState("");
-    
+
     useEffect(()=> {
-        // wild that this is empty for 
+        // wild that this is empty for
     }, tableData)
 
     const handleInputChange = event => {
@@ -53,7 +52,7 @@ const Table = () => {
     // }
     return (
         <div className="todo-container">
-            <UserProvider value={testerItem}>
+            <UserProvider value={tableData[0]}>
                 <Item />
             </UserProvider>
             <form>
@@ -65,7 +64,7 @@ const Table = () => {
                         <input id="todo-description" type="text" name="description" className="form-control" onChange={handleInputChange} placeholder="Todo Description" />
                     </div>
                     <div className="col-md-4 todo_input_col">
-                        <button id="add-todo-btn" type="button" onClick={addTodo} className="btn btn-dark">Add Todo</button>                    
+                        <button id="add-todo-btn" type="button" onClick={addTodo} className="btn btn-dark">Add Todo</button>
                     </div>
                 </div>
             </form>
@@ -81,12 +80,12 @@ const Table = () => {
                     </thead>
                     <tbody id="todos">
                         {tableData.map((row, key) => {
-                            return <Todo 
-                            title={row.title} 
-                            description={row.description} 
-                            num={key + 1} 
+                            return <Todo
+                            title={row.title}
+                            description={row.description}
+                            num={key + 1}
                             onClick={markComplete}
-                            key={key} 
+                            key={key}
                             />
                         })}
                     </tbody>
@@ -94,6 +93,6 @@ const Table = () => {
         </div>
             )
         }
-        
+
         const htmlTableElement = document.querySelector('#todos');
         render(createElement(Table), htmlTableElement);
